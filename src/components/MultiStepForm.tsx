@@ -90,6 +90,10 @@ const MultiStepForm: React.FC = () => {
 
   return (
     <div className={styles.multiStepFormContainer}>
+      <div className="header-section">
+        <h1>Search Flights, Cheapest Flights</h1>
+        <p>All the plane tickets you are looking for together!</p>
+      </div>
       <ProgressBar currentStep={currentStep - 1} totalSteps={TOTAL_STEPS} />
       <div className={styles.stepIndicator}>
         Step {currentStep} of {TOTAL_STEPS}

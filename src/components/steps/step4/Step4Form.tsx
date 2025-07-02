@@ -1,24 +1,23 @@
-
+// src/components/steps/step4/Step4Form.tsx
 
 import React, { useImperativeHandle } from 'react';
 import styles from './Step4Form.module.css';
+import Image from 'next/image'; // Import Next.js Image component
 
 // Define the interface for the methods exposed by this component via ref
 export interface Step4FormHandles {
-  validateAndProceed: () => boolean; // A function that validates and returns true if successful
+  validateAndProceed: () => boolean;
 }
 
-export interface Step4FormData {
-  // This step is purely informational and does not collect new data.
-}
+// Define Step4FormData as an empty object type more explicitly
+export type Step4FormData = Record<string, never>; // Represents an object with no properties
 
-interface Step4FormProps {
-  // No specific props needed as it's just displaying static content
-}
+// Define Step4FormProps as an empty object type more explicitly
+type Step4FormProps = Record<string, never>; // No specific props needed as it's just displaying static content
 
 
 const Step4Form = React.forwardRef<Step4FormHandles, Step4FormProps>(
-  (props, ref) => { 
+  (props, ref) => {
     useImperativeHandle(ref, () => ({
       validateAndProceed: () => {
         // This step is purely informational, so it's always valid
@@ -31,10 +30,14 @@ const Step4Form = React.forwardRef<Step4FormHandles, Step4FormProps>(
         <h2 className={styles.sectionTitle}>Miles Responsibility</h2>
         <div className={styles.contentWrapper}>
           <div className={styles.imageSection}>
-            <img
-              src="/Miles-img.svg" 
+            {/* Using Next.js <Image> component for optimization */}
+            <Image
+              src="/Miles-img.svg"
               alt="May the miles be with you. Vintage airplane"
               className={styles.milesImage}
+              width={300} // Provide appropriate width
+              height={200} // Provide appropriate height
+              priority // For images above the fold
             />
             <p className={styles.imageCaption}>May the miles be with you.</p>
           </div>
@@ -57,5 +60,8 @@ const Step4Form = React.forwardRef<Step4FormHandles, Step4FormProps>(
     );
   }
 );
+
+// Add displayName for better debugging
+Step4Form.displayName = 'Step4Form';
 
 export default Step4Form;

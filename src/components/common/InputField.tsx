@@ -1,3 +1,4 @@
+// src/components/common/InputField.tsx
 
 import React from 'react';
 import DatePicker from 'react-datepicker';
@@ -7,20 +8,21 @@ import styles from './InputField.module.css';
 interface InputFieldProps {
   id: string;
   label: React.ReactNode; // React.ReactNode to allow JSX (icons)
-  type: string; 
+  type: string;
   onChange: (value: string | Date | null) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   error?: string;
-  placeholder?: string; // This will now include the right-side icon char
+  placeholder?: string;
   readOnly?: boolean;
   minDate?: Date | null;
   value: string | number | Date | null;
 }
 
-interface CustomDateInputProps {
+// Define a specific interface for CustomDateInput's props
+interface CustomDateInputComponentProps {
   value?: string;
-  onClick?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
-  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
+  onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   placeholder?: string;
 }
 
@@ -46,16 +48,17 @@ const InputField: React.FC<InputFieldProps> = ({
 
   const inputId = `input-${id}`;
 
-  const CustomDateInput = React.forwardRef<HTMLInputElement, any>(
+  // Use the specific CustomDateInputComponentProps interface instead of 'any'
+  const CustomDateInput = React.forwardRef<HTMLInputElement, CustomDateInputComponentProps>(
     ({ value, onClick, onBlur, placeholder }, ref) => (
-      <div className={styles.inputWrapper}> {/* Use inputWrapper from updated CSS */}
+      <div className={styles.inputWrapper}>
         <input
           id={inputId}
           type="text" // Always text for date picker's custom input
           className={`${styles.input} ${error ? styles.inputError : ''}`}
           value={value || ''}
           onClick={onClick}
-          onFocus={onClick} // Ensures calendar opens on focus
+          onFocus={(e) => onClick?.(e as unknown as React.MouseEvent<HTMLInputElement>)} // Ensures calendar opens on focus
           onBlur={onBlur}
           readOnly={true}
           placeholder={placeholder || ''}
@@ -79,10 +82,10 @@ const InputField: React.FC<InputFieldProps> = ({
           minDate={minDate || undefined}
           popperPlacement="bottom-start"
           closeOnScroll={true}
-          shouldCloseOnSelect={true} 
+          shouldCloseOnSelect={true}
         />
       ) : (
-        <div className={styles.inputWrapper}> 
+        <div className={styles.inputWrapper}>
           <input
             id={inputId}
             type={type}
