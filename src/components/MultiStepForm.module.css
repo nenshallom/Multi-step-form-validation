@@ -1,0 +1,83 @@
+
+.multiStepFormContainer {
+  background-color: #1a202c;
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 700px; 
+  margin: 3rem auto;
+  color: #e0e6ed; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.stepIndicator {
+  font-size: 1.1rem;
+  color: #00bcd4; 
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.stepContent {
+  margin-bottom: 2rem;
+}
+
+.navigationButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding-top: 1rem; 
+}
+
+.backButton,
+.nextButton,
+.submitButton {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  flex: 1; 
+  max-width: 150px; 
+}
+
+.backButton {
+  background-color: #4a5568; 
+  color: #e0e6ed;
+}
+
+.backButton:hover {
+  background-color: #2d3748;
+  transform: translateY(-1px);
+}
+
+.nextButton {
+  background-color: #00bcd4;
+  color: #1a202c; 
+}
+
+.nextButton:hover {
+  background-color: #00acc1;
+  transform: translateY(-1px);
+}
+
+.submitButton {
+  background-color: #48bb78;
+  color: #1a202c;
+  flex: 1;
+}
+
+.submitButton:hover {
+  background-color: #38a169;
+  transform: translateY(-1px);
+}
+
+.loadingMessage {
+  text-align: center;
+  color: #e0e6ed;
+  font-size: 1.1rem;
+  padding: 2rem;
+}

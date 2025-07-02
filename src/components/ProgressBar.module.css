@@ -1,0 +1,90 @@
+.progressBarContainer {
+  display: flex;
+  justify-content: space-between; /* Spread steps evenly across the bar */
+  align-items: center;
+  width: 100%;
+  max-width: 700px; /* Limit the width to keep it neat */
+  margin: 2rem auto 3rem auto; /* Center the bar with spacing above and below */
+  padding: 0 1rem; /* Space at the sides on smaller screens */
+}
+
+.step {
+  display: flex;
+  flex-direction: column; /* Stack icon and potential label below */
+  align-items: center;
+  position: relative;
+  z-index: 1; /* Keep step circles above the connecting line */
+  transition: transform 0.3s ease-in-out; /* Smooth lift animation for active step */
+}
+
+.iconWrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Make the icon background perfectly circular */
+  background-color: #343a40; /* Inactive step background */
+  border: 2px solid #343a40; /* Inactive border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
+}
+
+.icon {
+  font-size: 1.8rem;
+  color: #a0a0a0; /* Inactive icon color */
+  transition: color 0.3s ease-in-out;
+}
+
+/* Styles for active/current step */
+.stepActive .iconWrapper {
+  background-color: #00bcd4; /* Highlight active step */
+  border-color: #00bcd4;
+  transform: translateY(-5px); /* Lift active step slightly */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Stronger shadow for active step */
+}
+
+.stepActive .icon {
+  color: white; /* Make active icon white */
+}
+
+/* Line connecting steps */
+.line {
+  flex-grow: 1; /* Line stretches to fill space between steps */
+  height: 4px;
+  background-color: #343a40; /* Inactive line color */
+  margin: 0 -0.5rem; /* Slight overlap with circles for a seamless look */
+  z-index: 0; /* Keep line behind the steps */
+  transition: background-color 0.3s ease-in-out;
+}
+
+.lineActive {
+  background-color: #00bcd4; /* Highlight the completed portion of the line */
+}
+
+/* Smaller screen adjustments */
+@media (max-width: 600px) {
+  .progressBarContainer {
+    padding: 0 0.5rem;
+  }
+
+  .iconWrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+  }
+
+  .line {
+    height: 3px;
+  }
+}
+
+/* On very small screens, hide progress bar for simplicity */
+@media (max-width: 400px) {
+  .progressBarContainer {
+    display: none;
+  }
+}

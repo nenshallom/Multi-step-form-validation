@@ -1,0 +1,34 @@
+
+.step1Container {
+  background-color: #161b22; 
+  border-radius: 12px; 
+  padding: 2.5rem; 
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+  width: 100%;
+  max-width: 700px; 
+  margin: 0 auto; 
+  color: #e0e6ed; 
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #e0e6ed;
+  margin-bottom: 2rem; 
+  text-align: center; 
+}
+
+.formGrid {
+  display: grid; 
+  grid-template-columns: 1fr; 
+  gap: 1.5rem; 
+  transition: all 0.3s ease; /* Smooth transition for grid changes */
+}
+
+
+@media (min-width: 768px) {
+  .formGrid {
+    grid-template-columns: 1fr 1fr; 
+    gap: 2rem; 
+  }
+}

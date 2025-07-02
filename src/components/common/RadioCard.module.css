@@ -1,0 +1,67 @@
+.radioCard {
+    background-color: #161b22; /* Dark background for inactive card */
+    border: 2px solid #343a40; /* Dark border for inactive card */
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column; /* Stack icon and label vertically */
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+    user-select: none;
+    position: relative; /* Needed for positioning the hidden radio input */
+    min-height: 120px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.radioCard:hover {
+    border-color: #00bcd4; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.radioCardActive {
+    background-color: #00bcd4; /* Highlight background for active card */
+    border-color: #00bcd4;
+    color: white;
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.radioCardIcon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: #a0a0a0;
+    transition: color 0.2s ease-in-out;
+}
+
+.radioCardActive .radioCardIcon {
+    color: white;
+}
+
+.radioCardLabel {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e0e6ed;
+    transition: color 0.2s ease-in-out;
+}
+
+.radioCardActive .radioCardLabel {
+    color: white;
+}
+
+/* Hide the default radio button visually, but it's still there for accessibility */
+.hiddenRadio {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    pointer-events: none;
+}
+
+/* Outline appears when navigating with keyboard (accessibility) */
+.radioCard:focus-visible {
+    outline: 2px solid #00bcd4;
+    outline-offset: 2px;
+}

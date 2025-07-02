@@ -1,0 +1,40 @@
+
+.step5Container {
+  background-color: #161b22;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 700px; 
+  margin: 0 auto;
+  color: #e0e6ed;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #e0e6ed;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.radioCardGrid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 1.5rem;
+  justify-items: center; 
+  align-items: center; 
+}
+
+@media (min-width: 500px) { 
+  .radioCardGrid {
+    grid-template-columns: 1fr 1fr; 
+  }
+}
+
+.errorMessage {
+  color: #dc3545; 
+  font-size: 0.9rem;
+  margin-top: 1.5rem; 
+}
