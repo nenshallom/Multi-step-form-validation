@@ -11,8 +11,16 @@ interface Step3FormProps {
   };
 }
 
+interface DisplayData {
+  from: string;
+  to: string;
+  departDate: string;
+  returnDate: string;
+  ticketType: string;
+}
+
 const Step3Form: React.FC<Step3FormProps> = ({ formData }) => {
-  const [displayData, setDisplayData] = useState<any>(null);
+  const [displayData, setDisplayData] = useState<DisplayData | null>(null);
 
   const parseDate = (dateValue: string | Date | null): Date | null => {
     if (dateValue instanceof Date) {
@@ -97,4 +105,5 @@ const Step3Form: React.FC<Step3FormProps> = ({ formData }) => {
   );
 };
 
+Step3Form.displayName = 'Step3Form';
 export default Step3Form;

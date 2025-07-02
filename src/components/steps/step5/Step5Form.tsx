@@ -117,4 +117,5 @@ const Step5Form = React.forwardRef<Step5FormHandles, Step5FormProps>(
   }
 );
 
+Step5Form.displayName = 'Step5Form';
 export default Step5Form;

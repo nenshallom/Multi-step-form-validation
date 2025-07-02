@@ -17,6 +17,13 @@ interface InputFieldProps {
   value: string | number | Date | null;
 }
 
+interface CustomDateInputProps {
+  value?: string;
+  onClick?: (event: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+}
+
 const InputField: React.FC<InputFieldProps> = ({
   id,
   label,
@@ -46,7 +53,7 @@ const InputField: React.FC<InputFieldProps> = ({
           id={inputId}
           type="text" // Always text for date picker's custom input
           className={`${styles.input} ${error ? styles.inputError : ''}`}
-          value={(value as string) || ''}
+          value={value || ''}
           onClick={onClick}
           onFocus={onClick} // Ensures calendar opens on focus
           onBlur={onBlur}

@@ -8,14 +8,14 @@ import ProgressBar from './ProgressBar';
 import Step1Form, { Step1FormHandles, Step1FormData } from './steps/step1/Step1Form';
 import Step2Form, { Step2FormHandles, Step2FormData } from './steps/step2/Step2Form';
 import Step3Form from './steps/step3/Step3Form';
-import Step4Form from './steps/step4/Step4Form';
+import Step4Form, { Step4FormData }  from './steps/step4/Step4Form';
 import Step5Form, { Step5FormHandles, Step5FormData } from './steps/step5/Step5Form';
 
 // --- Define the shape for Step 5 data ---
 interface FormData {
   step1: Step1FormData;
   step2: Step2FormData;
-  step4: {}; // Placeholder
+  step4: Step4FormData; // Assuming Step4FormData is defined in Step4Form
   step5: Step5FormData; // Use the imported type
 }
 
@@ -27,13 +27,11 @@ const MultiStepForm: React.FC = () => {
     step1: { from: '', to: '', departDate: null, returnDate: null },
     step2: { ticketType: '' },
     step4: {},
-    // ---Initialize step5 data correctly ---
     step5: { foundationType: '' },
   });
 
   const step1Ref = useRef<Step1FormHandles>(null);
   const step2Ref = useRef<Step2FormHandles>(null);
-  // --- Create a ref for Step 5 to trigger validation ---
   const step5Ref = useRef<Step5FormHandles>(null);
 
   const handleUpdateFormData = (stepName: keyof FormData, data: any) => {
