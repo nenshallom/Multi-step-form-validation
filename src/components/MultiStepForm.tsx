@@ -8,15 +8,15 @@ import ProgressBar from './ProgressBar';
 import Step1Form, { Step1FormHandles, Step1FormData } from './steps/step1/Step1Form';
 import Step2Form, { Step2FormHandles, Step2FormData } from './steps/step2/Step2Form';
 import Step3Form from './steps/step3/Step3Form';
-import Step4Form, { Step4FormData }  from './steps/step4/Step4Form';
+import Step4Form, { Step4FormData } from './steps/step4/Step4Form';
 import Step5Form, { Step5FormHandles, Step5FormData } from './steps/step5/Step5Form';
 
 // --- Define the shape for Step 5 data ---
 interface FormData {
   step1: Step1FormData;
   step2: Step2FormData;
-  step4: Step4FormData; // Assuming Step4FormData is defined in Step4Form
-  step5: Step5FormData; // Use the imported type
+  step4: Step4FormData;
+  step5: Step5FormData;
 }
 
 const TOTAL_STEPS = 5;
@@ -34,7 +34,7 @@ const MultiStepForm: React.FC = () => {
   const step2Ref = useRef<Step2FormHandles>(null);
   const step5Ref = useRef<Step5FormHandles>(null);
 
-  const handleUpdateFormData = (stepName: keyof FormData, data: any) => {
+  const handleUpdateFormData = (stepName: keyof FormData, data: Partial<FormData[keyof FormData]>) => {
     setFormData((prev) => ({
       ...prev,
       [stepName]: { ...prev[stepName], ...data },
@@ -56,7 +56,6 @@ const MultiStepForm: React.FC = () => {
     setCurrentStep((prev) => prev - 1);
   };
 
-  // --- Handle the final submission ---
   const handleSubmit = () => {
     let isStep5Valid = true;
     if (step5Ref.current) {
@@ -65,7 +64,6 @@ const MultiStepForm: React.FC = () => {
 
     if (isStep5Valid) {
       console.log('Form Submitted!', formData);
-      // Here you would typically send the data to a server
       alert('Thank you for your submission!');
     }
   };
@@ -73,16 +71,33 @@ const MultiStepForm: React.FC = () => {
   const renderStepComponent = () => {
     switch (currentStep) {
       case 1:
-        return <Step1Form ref={step1Ref} initialData={formData.step1} onUpdateFormData={(data) => handleUpdateFormData('step1', data)} />;
+        return (
+          <Step1Form
+            ref={step1Ref}
+            initialData={formData.step1}
+            onUpdateFormData={(data) => handleUpdateFormData('step1', data)}
+          />
+        );
       case 2:
-        return <Step2Form ref={step2Ref} initialData={formData.step2} onUpdateFormData={(data) => handleUpdateFormData('step2', data)} />;
+        return (
+          <Step2Form
+            ref={step2Ref}
+            initialData={formData.step2}
+            onUpdateFormData={(data) => handleUpdateFormData('step2', data)}
+          />
+        );
       case 3:
         return <Step3Form formData={formData} />;
       case 4:
         return <Step4Form />;
-      // --- UPDATE RENDER: Pass the correct props to Step5Form ---
       case 5:
-        return <Step5Form ref={step5Ref} initialData={formData.step5} onUpdateFormData={(data) => handleUpdateFormData('step5', data)} />;
+        return (
+          <Step5Form
+            ref={step5Ref}
+            initialData={formData.step5}
+            onUpdateFormData={(data) => handleUpdateFormData('step5', data)}
+          />
+        );
       default:
         return <div className={styles.loadingMessage}>Invalid step.</div>;
     }
@@ -98,19 +113,22 @@ const MultiStepForm: React.FC = () => {
       <div className={styles.stepIndicator}>
         Step {currentStep} of {TOTAL_STEPS}
       </div>
-      <div className={styles.stepContent}>
-        {renderStepComponent()}
-      </div>
+      <div className={styles.stepContent}>{renderStepComponent()}</div>
       <div className={styles.navigationButtons}>
         {currentStep > 1 && (
-          <button className={styles.backButton} onClick={handleBack}>Back</button>
+          <button className={styles.backButton} onClick={handleBack}>
+            Back
+          </button>
         )}
         {currentStep < TOTAL_STEPS && (
-          <button className={styles.nextButton} onClick={handleNext}>Next</button>
+          <button className={styles.nextButton} onClick={handleNext}>
+            Next
+          </button>
         )}
         {currentStep === TOTAL_STEPS && (
-          // --- Call handleSubmit on click ---
-          <button className={styles.submitButton} onClick={handleSubmit}>Submit</button>
+          <button className={styles.submitButton} onClick={handleSubmit}>
+            Submit
+          </button>
         )}
       </div>
     </div>
