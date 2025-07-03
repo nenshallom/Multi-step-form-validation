@@ -11,7 +11,6 @@ import Step3Form from './steps/step3/Step3Form';
 import Step4Form, { Step4FormData } from './steps/step4/Step4Form';
 import Step5Form, { Step5FormHandles, Step5FormData } from './steps/step5/Step5Form';
 
-// --- Define the shape for Step 5 data ---
 interface FormData {
   step1: Step1FormData;
   step2: Step2FormData;
@@ -45,7 +44,6 @@ const MultiStepForm: React.FC = () => {
     let isValid = true;
     if (currentStep === 1) isValid = step1Ref.current?.validateAndProceed() ?? false;
     if (currentStep === 2) isValid = step2Ref.current?.validateAndProceed() ?? false;
-    // Add validation for other steps here if they have it
 
     if (isValid && currentStep < TOTAL_STEPS) {
       setCurrentStep((prev) => prev + 1);

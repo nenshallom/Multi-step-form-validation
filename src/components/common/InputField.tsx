@@ -1,4 +1,3 @@
-// src/components/common/InputField.tsx
 
 import React from 'react';
 import DatePicker from 'react-datepicker';

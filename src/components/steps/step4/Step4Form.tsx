@@ -1,8 +1,7 @@
-// src/components/steps/step4/Step4Form.tsx
 
 import React, { useImperativeHandle } from 'react';
 import styles from './Step4Form.module.css';
-import Image from 'next/image'; // Import Next.js Image component
+import Image from 'next/image'; 
 
 // Define the interface for the methods exposed by this component via ref
 export interface Step4FormHandles {
@@ -13,14 +12,13 @@ export interface Step4FormHandles {
 export type Step4FormData = Record<string, never>; // Represents an object with no properties
 
 // Define Step4FormProps as an empty object type more explicitly
-type Step4FormProps = Record<string, never>; // No specific props needed as it's just displaying static content
+type Step4FormProps = Record<string, never>; 
 
 
 const Step4Form = React.forwardRef<Step4FormHandles, Step4FormProps>(
   (props, ref) => {
     useImperativeHandle(ref, () => ({
       validateAndProceed: () => {
-        // This step is purely informational, so it's always valid
         return true;
       },
     }));
@@ -30,14 +28,13 @@ const Step4Form = React.forwardRef<Step4FormHandles, Step4FormProps>(
         <h2 className={styles.sectionTitle}>Miles Responsibility</h2>
         <div className={styles.contentWrapper}>
           <div className={styles.imageSection}>
-            {/* Using Next.js <Image> component for optimization */}
             <Image
               src="/Miles-img.svg"
               alt="May the miles be with you. Vintage airplane"
               className={styles.milesImage}
-              width={300} // Provide appropriate width
-              height={200} // Provide appropriate height
-              priority // For images above the fold
+              width={300} 
+              height={200} 
+              priority 
             />
             <p className={styles.imageCaption}>May the miles be with you.</p>
           </div>

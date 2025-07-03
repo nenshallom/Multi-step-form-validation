@@ -50,6 +50,10 @@ Follow these instructions to get a copy of the project up and running on your lo
     Open [http://localhost:3000] with your browser to see the result.
 
 
+## 🌐 Live Preview
+
+[View Live Demo](https://multistepverification.netlify.app/)
+
 ## 📈 Future Enhancements
 
 * User Authentication

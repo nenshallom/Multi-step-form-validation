@@ -3,7 +3,7 @@ import React, { useState, useImperativeHandle } from 'react';
 import RadioCard from '../../common/RadioCard'; 
 import styles from './Step5Form.module.css'; 
 
-// to be replace with actual SVG components or image imports later
+// serve as placeholder icons for the foundations
 const HomeIcon = '🏠';
 const GlobeIcon = '🌐'; 
 const HandIcon = '🤲'; 
@@ -39,7 +39,7 @@ const Step5Form = React.forwardRef<Step5FormHandles, Step5FormProps>(
 
     // 3. Handle radio card selection change
     const handleFoundationTypeChange = (value: string) => {
-      setFoundationType(value as Step5FormData['foundationType']); // Update the state
+      setFoundationType(value as Step5FormData['foundationType']); 
       setError(''); // Clear any previous error when a selection is made
     };
 
